@@ -1,0 +1,10 @@
+__pycache__/
+
+.idea/
+
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+
+db.sqlite3
