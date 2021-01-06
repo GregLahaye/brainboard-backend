@@ -120,6 +120,6 @@ STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'brainboard.authentication.BearerTokenAuthentication',
     ]
 }
