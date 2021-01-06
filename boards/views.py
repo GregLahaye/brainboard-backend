@@ -23,6 +23,8 @@ class BoardViewSet(ModelWithOwnerViewSet):
     serializer_class = BoardSerializer
 
     def retrieve(self, request, *args, **kwargs):
+        response = super().retrieve(request, args, kwargs)
+
         board_id = kwargs['pk']
 
         boards_queryset = Board.objects.filter(board=board_id)
@@ -31,12 +33,10 @@ class BoardViewSet(ModelWithOwnerViewSet):
         boards = BoardSerializer(boards_queryset, many=True).data
         notes = NoteSerializer(notes_queryset, many=True).data
 
-        data = {
-            'boards': boards,
-            'notes': notes,
-        }
+        response.data['boards'] = boards
+        response.data['notes'] = notes
 
-        return Response(data)
+        return response
 
 
 class NoteViewSet(ModelWithOwnerViewSet):
