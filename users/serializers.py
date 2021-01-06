@@ -6,7 +6,7 @@ from boards.models import Board
 
 class UserSerializer(serializers.ModelSerializer):
     boards = serializers.PrimaryKeyRelatedField(
-        many=True, queryset=Board.objects.all())
+        required=False, many=True, queryset=Board.objects.all())
 
     class Meta:
         model = User

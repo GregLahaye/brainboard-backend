@@ -7,3 +7,8 @@ from users.serializers import UserSerializer
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = []
+
+    def get_queryset(self):
+        user = self.request.user
+        return User.objects.filter(pk=user.id)
