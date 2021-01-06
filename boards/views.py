@@ -26,5 +26,3 @@ class NoteViewSet(ModelWithOwnerViewSet):
     model = Note
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
-
-
