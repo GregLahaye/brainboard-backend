@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.exceptions import PermissionDenied
 
 from boards.models import Board, Note
 
@@ -14,7 +15,7 @@ class BoardSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         if 'board' in attrs and attrs['board'].owner != self.context['request'].user:
-            raise PermissionError('You are not the owner of this board')
+            raise PermissionDenied()
 
         return attrs
 
@@ -29,6 +30,6 @@ class NoteSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         if 'board' in attrs and attrs['board'].owner != self.context['request'].user:
-            raise PermissionError('You are not the owner of this board')
+            raise PermissionDenied()
 
         return attrs
