@@ -5,13 +5,14 @@ from boards.models import Board, Note
 
 
 class BoardSerializer(serializers.ModelSerializer):
+    boards = serializers.PrimaryKeyRelatedField(many=True, required=False, queryset=Board.objects.all())
     notes = serializers.PrimaryKeyRelatedField(many=True, required=False, queryset=Note.objects.all())
     board = serializers.PrimaryKeyRelatedField(required=False, queryset=Board.objects.all())
     owner = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Board
-        fields = ['id', 'title', 'notes', 'boards', 'board', 'owner']
+        fields = ['id', 'title', 'boards', 'notes', 'board', 'owner']
 
     def validate(self, attrs):
         if 'board' in attrs and attrs['board'].owner != self.context['request'].user:
