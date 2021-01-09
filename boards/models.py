@@ -13,7 +13,7 @@ class Board(models.Model):
 
 class Note(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    content = models.TextField(default='')
+    content = models.TextField(blank=True, default='')
     board = models.ForeignKey('Board', related_name='notes', on_delete=models.CASCADE)
     owner = models.ForeignKey('auth.User', related_name='notes', on_delete=models.CASCADE)
 
