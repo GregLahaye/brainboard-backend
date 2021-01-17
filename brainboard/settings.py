@@ -27,10 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '8y@5h(@)aszwf!r*7ef6ok9dgxwhhl-u#$3t4ts(doa2%4umat'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'brainboard-app.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
