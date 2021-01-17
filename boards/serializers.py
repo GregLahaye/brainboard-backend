@@ -13,7 +13,7 @@ class NoteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Note
-        fields = ['id', 'content', 'notes', 'note', 'owner']
+        fields = ['id', 'content', 'position', 'notes', 'note', 'owner']
 
     def validate(self, attrs):
         if 'board' in attrs and attrs['board'].owner != self.context['request'].user:
